@@ -7,7 +7,7 @@ Since redundancy is required on production, certain co-ordination is needed to g
 
 ZooKeeper is a distributed, open-source coordination service for distributed applications
 As Zookeeper data model is styled after the familiar directory tree structure of file systems they are most suited for this.  
-I provide here a lock implementation (i.e. ZookeeperDistributedLock), using zookeeper proposed guidelines 
+I provide here a custom lock implementation (i.e. ZookeeperDistributedLock), using zookeeper proposed guidelines 
 
 ### Steps 
  
@@ -47,4 +47,4 @@ Build the executable
     
 Run
     
-    java -jar <jar-name>
+    java -jar build/libs/ZookeeperDistributedLock-1.0.jar

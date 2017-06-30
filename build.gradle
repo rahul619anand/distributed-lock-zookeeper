@@ -1,5 +1,5 @@
 group 'com.bornconfused'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 apply plugin:'scala'
 apply plugin: 'maven'
@@ -26,13 +26,13 @@ dependencies {
 }
 
 
-task fatJar(type: Jar) {
+task createExecutableJar(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Jar File Example',
+        attributes 'Implementation-Title': 'Fat Jar',
                 'Implementation-Version': version,
-                'Main-Class': 'om.bornconfused.zookeeperDistributedLock.Main'
+                'Main-Class': 'com.bornconfused.zookeeperDistributedLock.Main'
     }
-    baseName = project.name + '-all'
+    baseName = project.name
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
