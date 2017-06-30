@@ -11,7 +11,7 @@
         <appender-ref ref="console" />
     </root>
 
-    <logger name="com.bornconfused.zookeeperDistributedLock.ZookeeperDistributedLock" level="DEBUG">
+    <logger name="com.bornconfused.zookeeperDistributedLock.lock.ZookeeperDistributedLock" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
 </configuration>

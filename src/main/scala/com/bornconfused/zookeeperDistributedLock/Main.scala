@@ -1,5 +1,6 @@
 package com.bornconfused.zookeeperDistributedLock
 
+import com.bornconfused.zookeeperDistributedLock.jobs.{Job1, Job2}
 import org.quartz.{CronScheduleBuilder, JobBuilder, Trigger, TriggerBuilder}
 import org.quartz.impl.StdSchedulerFactory
 
@@ -16,18 +17,18 @@ object Main {
 
     lazy val scheduler = new StdSchedulerFactory().getScheduler
 
-    val job = JobBuilder
-      .newJob(classOf[LockJob])
-      .withIdentity("Job", "Group")
+    val job1 = JobBuilder
+      .newJob(classOf[Job1])
+      .withIdentity("Job1", "Group1")
       .build
 
     val job2 = JobBuilder
-      .newJob(classOf[LockJob2])
+      .newJob(classOf[Job2])
       .withIdentity("Job2", "Group2")
       .build
 
-    val trigger: Trigger = TriggerBuilder.newTrigger
-      .withIdentity("Trigger", "Group")
+    val trigger1: Trigger = TriggerBuilder.newTrigger
+      .withIdentity("Trigger1", "Group1")
       .startNow()
       .withSchedule(CronScheduleBuilder.cronSchedule("0/30 * * * * ?"))
       .build
@@ -38,7 +39,7 @@ object Main {
       .build
 
     scheduler.start
-    scheduler.scheduleJob(job, trigger)
+    scheduler.scheduleJob(job1, trigger1)
     scheduler.scheduleJob(job2, trigger2)
 
   }
